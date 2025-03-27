@@ -1,8 +1,8 @@
-# ed25519-dalek-ecies
+# ed25519-dalek-hpke
 
-[![crates.io](https://img.shields.io/crates/v/ed25519-dalek-ecies.svg)](https://crates.io/crates/ed25519-dalek-ecies)
-[![docs.rs](https://docs.rs/ed25519-dalek-ecies/badge.svg)](https://docs.rs/ed25519-dalek-ecies)
-[![Build Status](https://github.com/rustonbsd/ed25519-dalek-ecies/workflows/CI/badge.svg)](https://github.com/rustonbsd/ed25519-dalek-ecies/actions)
+[![crates.io](https://img.shields.io/crates/v/ed25519-dalek-hpke.svg)](https://crates.io/crates/ed25519-dalek-hpke)
+[![docs.rs](https://docs.rs/ed25519-dalek-hpke/badge.svg)](https://docs.rs/ed25519-dalek-hpke)
+[![Build Status](https://github.com/rustonbsd/ed25519-dalek-hpke/workflows/CI/badge.svg)](https://github.com/rustonbsd/ed25519-dalek-hpke/actions)
 [![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg)](LICENSE)
 
 **Convenient ECIES encryption and decryption using `ed25519-dalek` keys.**

@@ -7,7 +7,7 @@ description = "HPKE encryption/decryption using `ed25519-dalek` keys via automat
 license = "MIT"
 repository = "https://github.com/rustonbsd/ed25519-dalek-hpke"
 readme = "README.md"
-keywords = ["cryptography", "crypto", "encryption", "decryption", "hpke", "x25519"]
+keywords = ["cryptography", "encryption", "decryption", "hpke", "x25519"]
 categories = ["cryptography"]
 
 [dependencies]
