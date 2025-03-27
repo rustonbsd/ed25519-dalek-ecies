@@ -1,0 +1,29 @@
+[package]
+name = "ed25519-dalek-hpke"
+version = "0.0.1"
+edition = "2021"
+authors = ["Zacharias Boehler <rustonbsd@mailfence.com>"]
+description = "HPKE encryption/decryption using `ed25519-dalek` keys via automatic X25519 conversion."
+license = "MIT"
+repository = "https://github.com/rustonbsd/ed25519-dalek-hpke"
+readme = "README.md"
+keywords = ["cryptography", "crypto", "encryption", "decryption", "hpke", "x25519"]
+categories = ["cryptography"]
+
+[dependencies]
+ed25519-dalek = { version = "2", features = ["rand_core"]}
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+hpke = { version = "0.13.0", features = ["x25519"] }
+rand = { version = "0.9", default-features = false, features = [
+    "std_rng",
+    "thread_rng"
+] }
+rand_core = { version = "0.6.4" }
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+lto = true
+panic = "abort"
