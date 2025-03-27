@@ -1,6 +1,6 @@
 [package]
 name = "ed25519-dalek-hpke"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 authors = ["Zacharias Boehler <rustonbsd@mailfence.com>"]
 description = "HPKE encryption/decryption using `ed25519-dalek` keys via automatic X25519 conversion."
