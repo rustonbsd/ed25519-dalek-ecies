@@ -16,7 +16,7 @@ This crate provides a simple API to encrypt data for an `ed25519-dalek` public k
 *   **Automatic Key Conversion:** Converts Ed25519 keys to their X25519 counterparts as required by ECIES.
 *   **Underlying Primitives:** Uses `x25519-dalek` for key conversion and the `ecies` crate for the ECIES implementation (handling ECDH, KDF, and AEAD).
 
-## ⚠️ Security Warning ⚠️
+## Security Warning
 
 *   **EXPERIMENTAL:** This library is experimental and has **not** undergone a formal security audit. Use it at your own risk.
 *   **Ed25519 vs. X25519:** Ed25519 is primarily a signature scheme. While the underlying curve allows for key exchange via conversion to X25519 (Montgomery form), using the same key pair for both signing and encryption can have security implications depending on your protocol. Consider using separate key pairs for signing and encryption if your security model allows it.
