@@ -38,15 +38,15 @@ impl StdError for Error {
     }
 }
 
-pub trait Ed25519EciesEncryption<VerifyingKey> {
+pub trait Ed25519hpkeEncryption<VerifyingKey> {
     fn encrypt(&self, data: &[u8]) -> Result<Vec<u8>, Error>;
 }
 
-pub trait Ed25519EciesDecryption<SigningKey> {
+pub trait Ed25519hpkeDecryption<SigningKey> {
     fn decrypt(&self, data: &[u8]) -> Result<Vec<u8>, Error>;
 }
 
-impl Ed25519EciesEncryption<ed25519_dalek::VerifyingKey> for ed25519_dalek::VerifyingKey {
+impl Ed25519hpkeEncryption<ed25519_dalek::VerifyingKey> for ed25519_dalek::VerifyingKey {
     fn encrypt(&self, data: &[u8]) -> Result<Vec<u8>, Error> {
         let mut csprng = StdRng::from_rng(&mut rand::rng());
 
@@ -79,11 +79,11 @@ impl Ed25519EciesEncryption<ed25519_dalek::VerifyingKey> for ed25519_dalek::Veri
     }
 }
 
-impl Ed25519EciesDecryption<ed25519_dalek::SigningKey> for ed25519_dalek::SigningKey {
+impl Ed25519hpkeDecryption<ed25519_dalek::SigningKey> for ed25519_dalek::SigningKey {
     fn decrypt(&self, data: &[u8]) -> Result<Vec<u8>, Error> {
-        let ecies_secret_key = secret_key_from_ed25519_to_x25519(self)?;
+        let static_secret_key = secret_key_from_ed25519_to_x25519(self)?;
         let hpke_recipient_sk =
-            <X25519HkdfSha256 as Kem>::PrivateKey::from_bytes(ecies_secret_key.as_bytes())
+            <X25519HkdfSha256 as Kem>::PrivateKey::from_bytes(static_secret_key.as_bytes())
                 .map_err(|_| Error::InvalidKey)?;
 
         if data.len() < 8 {
@@ -172,7 +172,7 @@ mod tests {
         let verifying_key = signing_key.verifying_key();
 
         // Test data
-        let plaintext = b"Hello, ECIES!";
+        let plaintext = b"Hello, HPKE!";
 
         // Encrypt using Ed25519 public key
         let ciphertext = verifying_key.encrypt(plaintext);

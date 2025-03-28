@@ -1,5 +1,5 @@
 use ed25519_dalek::SigningKey;
-use ed25519_dalek_hpke::{Ed25519EciesEncryption, Ed25519EciesDecryption};
+use ed25519_dalek_hpke::{Ed25519hpkeEncryption, Ed25519hpkeDecryption};
 use rand_core::OsRng;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
